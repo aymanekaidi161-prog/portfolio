@@ -1,4 +1,8 @@
 .about {
+  min-height: 100vh;
+  padding: 100px 20px;
+  background: #0a0a0a;
+  position: relative;
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -11,12 +15,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-.about {
-  min-height: 100vh;
-  padding: 100px 20px;
-  background: #0a0a0a;
-  position: relative;
 }
 
 .about::before {
@@ -96,18 +94,22 @@
 
 .tech-title-icon {
   font-size: 36px;
-  animation: bounce 2s infinite;
+  animation: pulse 2s infinite;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+  }
+  50% { 
+    transform: scale(1.1);
+  }
 }
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease;
@@ -122,17 +124,17 @@
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(167, 139, 250, 0.15);
-  border-radius: 12px;
-  padding: 25px;
+  border-radius: 15px;
+  padding: 30px 20px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUpCard 0.6s ease forwards;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeInUpCard {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -149,7 +151,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, transparent, var(--tech-color), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
@@ -160,54 +162,88 @@
 }
 
 .tech-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px) scale(1.02);
   border-color: var(--tech-color);
-  box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
   background: rgba(255, 255, 255, 0.05);
 }
 
 .tech-card-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
-.tech-icon {
-  width: 50px;
-  height: 50px;
+.tech-logo-wrapper {
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  font-weight: bold;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tech-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.3));
   transition: all 0.3s ease;
 }
 
-.tech-card:hover .tech-icon {
+.tech-letter {
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tech-card:hover .tech-logo-wrapper {
   background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 20px var(--tech-color);
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.tech-card:hover .tech-logo {
+  filter: drop-shadow(0 0 20px var(--tech-color));
+  transform: scale(1.05);
+}
+
+.tech-card:hover .tech-letter {
+  text-shadow: 0 0 20px var(--tech-color);
+  transform: scale(1.05);
 }
 
 .tech-info {
-  flex: 1;
+  text-align: center;
 }
 
 .tech-name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #ffffff;
-  margin: 0 0 5px 0;
+  margin: 0 0 8px 0;
 }
 
 .tech-category {
   font-size: 12px;
   color: #9ca3af;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  padding: 4px 12px;
+  background: rgba(167, 139, 250, 0.1);
+  border-radius: 12px;
+  display: inline-block;
 }
 
 .tech-glow {
@@ -218,32 +254,99 @@
   height: 200%;
   opacity: 0;
   border-radius: 50%;
-  filter: blur(40px);
-  transition: opacity 0.3s ease;
+  filter: blur(50px);
+  transition: opacity 0.4s ease;
 }
 
 .tech-card:hover .tech-glow {
-  opacity: 0.15;
+  opacity: 0.2;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .about {
+    padding: 60px 15px;
+  }
+
   .section-title {
-    font-size: 36px;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .about-intro {
+    font-size: 18px;
+  }
+
+  .about-description {
+    font-size: 15px;
+  }
+  
+  .tech-stack-section {
+    margin-top: 40px;
+  }
+
+  .tech-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .tech-title-icon {
+    font-size: 28px;
   }
   
   .tech-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
   
   .tech-card {
-    padding: 20px;
+    padding: 20px 15px;
   }
-  
-  .tech-icon {
-    width: 40px;
-    height: 40px;
+
+  .tech-logo-wrapper {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+  }
+
+  .tech-letter {
     font-size: 24px;
+  }
+
+  .tech-name {
+    font-size: 15px;
+  }
+
+  .tech-category {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 28px;
+  }
+
+  .about-intro {
+    font-size: 16px;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-card {
+    padding: 25px 20px;
+  }
+
+  .tech-logo-wrapper {
+    width: 55px;
+    height: 55px;
+  }
+
+  .tech-letter {
+    font-size: 28px;
   }
 }

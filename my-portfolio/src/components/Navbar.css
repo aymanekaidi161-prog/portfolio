@@ -73,38 +73,37 @@
   color: #a78bfa;
 }
 
-.navbar-mobile {
-  display: none;
-  padding-bottom: 16px;
-  background: rgba(10, 10, 10, 0.98);
-}
 
-.nav-link-mobile {
-  display: block;
-  padding: 12px 0;
-  color: #d1d5db;
-  text-decoration: none;
-  transition: all 0.3s;
-  border-left: 3px solid transparent;
-  padding-left: 15px;
-}
-
-.nav-link-mobile:hover {
-  color: #a78bfa;
-  border-left-color: #a78bfa;
-  background: rgba(167, 139, 250, 0.05);
-}
-
+/* Mobile Responsive */
 @media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  .navbar-content {
+    height: 60px;
+  }
+
+  .navbar-logo {
+    font-size: 20px;
+  }
+
   .navbar-menu {
     display: none;
   }
   
   .navbar-toggle {
     display: block;
+    font-size: 28px;
   }
   
   .navbar-mobile {
     display: block;
+    padding-bottom: 16px;
+  }
+
+  .nav-link-mobile {
+    padding: 15px 0;
+    font-size: 16px;
   }
 }

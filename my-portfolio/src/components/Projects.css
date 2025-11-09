@@ -232,21 +232,90 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .projects {
+    padding: 60px 15px;
+  }
+
   .section-title {
-    font-size: 36px;
+    font-size: 32px;
   }
   
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .section-subtitle {
+    font-size: 16px;
+    margin-bottom: 40px;
   }
   
   .filter-buttons {
     gap: 10px;
+    margin-bottom: 30px;
   }
-  
+
   .filter-btn {
     padding: 8px 15px;
-    font-size: 12px;
+    font-size: 11px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-card {
+    margin: 0;
+  }
+
+  .project-image {
+    height: 150px;
+  }
+
+  .project-emoji {
+    font-size: 60px;
+  }
+
+  .project-content {
+    padding: 20px;
+  }
+
+  .project-title {
+    font-size: 20px;
+  }
+
+  .project-description {
+    font-size: 14px;
+  }
+
+  .project-tags {
+    gap: 6px;
+  }
+
+  .project-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .project-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .project-link {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 28px;
+  }
+
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+
+  .project-title {
+    font-size: 18px;
   }
 }

@@ -181,7 +181,7 @@
   100% { transform: rotate(0deg) translate(100%, 100%); }
 }
 
-/* If you add a real photo, add this class */
+
 .profile-image {
   width: 100%;
   height: 100%;
@@ -191,44 +191,81 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .hero {
+    padding: 70px 15px 40px;
+    min-height: auto;
+  }
+
   .hero-content {
     grid-template-columns: 1fr;
+    gap: 40px;
     text-align: center;
   }
   
+  .hero-greeting {
+    font-size: 18px;
+  }
+  
   .hero-name {
-    font-size: 40px;
+    font-size: 32px;
+    line-height: 1.3;
   }
   
   .hero-role {
-    font-size: 22px;
+    font-size: 20px;
+    min-height: 35px;
   }
   
   .hero-description {
-    margin: 0 auto 30px;
+    font-size: 16px;
+    margin: 0 auto 25px;
+    max-width: 100%;
   }
   
   .hero-buttons {
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 25px;
+  }
+
+  .social-links {
+    justify-content: center;
   }
   
   .image-container {
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
   }
-}
-.hero {
-  animation: fadeIn 1s ease-in;
+  
+  .image-container::before {
+    width: 260px;
+    height: 260px;
+  }
+
+  .image-placeholder {
+    font-size: 20px;
+  }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Extra small phones */
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 28px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .hero-role {
+    font-size: 18px;
+  }
+
+  .image-container {
+    width: 180px;
+    height: 180px;
   }
 }

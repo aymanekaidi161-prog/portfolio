@@ -23,18 +23,60 @@ export default function About() {
   }, []);
 
   const techStack = [
-    { name: 'React', category: 'Frontend', color: '#61DAFB' },
-    { name: 'JavaScript', category: 'Language', color: '#F7DF1E' },
-    { name: 'Node.js', category: 'Backend', color: '#339933' },
-    { name: 'MongoDB', category: 'Database', color: '#47A248' },
-    { name: 'HTML5', category: 'Frontend', color: '#E34F26' },
-    { name: 'CSS3', category: 'Frontend', color: '#1572B6' },
-    { name: 'Express', category: 'Backend', color: '#ffffff' },
-    { name: 'Git', category: 'Tools', color: '#F05032' },
-    { name: 'Python', category: 'Language', color: '#3776AB' },
-    { name: 'TypeScript', category: 'Language', color: '#3178C6' },
-    { name: 'Tailwind', category: 'Frontend', color: '#06B6D4' },
-    { name: 'Redux', category: 'Frontend', color: '#764ABC' }
+    { 
+      name: 'React.js', 
+      category: 'Frontend', 
+      color: '#61DAFB',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
+    },
+    { 
+      name: 'JavaScript', 
+      category: 'Language', 
+      color: '#F7DF1E',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
+    },
+    { 
+      name: 'HTML5', 
+      category: 'Frontend', 
+      color: '#E34F26',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
+    },
+    { 
+      name: 'CSS3', 
+      category: 'Frontend', 
+      color: '#1572B6',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
+    },
+    { 
+      name: 'PHP', 
+      category: 'Backend', 
+      color: '#777BB4',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg'
+    },
+    { 
+      name: 'Laravel', 
+      category: 'Backend', 
+      color: '#FF2D20',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg'
+    },
+    { 
+      name: 'MySQL', 
+      category: 'Database', 
+      color: '#4479A1',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'
+    },
+    { 
+      name: 'Bootstrap', 
+      category: 'Frontend', 
+      color: '#7952B3',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'
+    },
+    { 
+      name: 'MongoDB', 
+      category: 'Database', 
+      color: '#47A248',
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg'
+    }
   ];
 
   return (
@@ -62,8 +104,8 @@ export default function About() {
 
         <div className="tech-stack-section">
           <h3 className="tech-title">
-            <span className="tech-title-icon">🚀</span>
-            Tech Stack & Skills
+            <span className="tech-title-icon">⚡</span>
+            Tech Stack & Tools
           </h3>
           <div className={`tech-grid ${isVisible ? 'animate' : ''}`}>
             {techStack.map((tech, index) => (
@@ -76,8 +118,19 @@ export default function About() {
                 }}
               >
                 <div className="tech-card-inner">
-                  <div className="tech-icon" style={{ color: tech.color }}>
-                    {tech.name.charAt(0)}
+                  <div className="tech-logo-wrapper">
+                    <img 
+                      src={tech.logo} 
+                      alt={tech.name}
+                      className="tech-logo"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="tech-letter" style={{ display: 'none', color: tech.color }}>
+                      {tech.name.charAt(0)}
+                    </div>
                   </div>
                   <div className="tech-info">
                     <h4 className="tech-name">{tech.name}</h4>

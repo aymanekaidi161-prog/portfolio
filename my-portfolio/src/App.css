@@ -101,3 +101,19 @@ section::after {
 section:last-child::after {
   display: none;
 }
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  main {
+    padding: 0;
+  }
+
+  section {
+    scroll-margin-top: 60px;
+  }
+
+  /* Reduce background animation intensity on mobile */
+  .App::before,
+  .App::after {
+    opacity: 0.5;
+  }
+}
