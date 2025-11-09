@@ -8,15 +8,27 @@ import SectionDivider from './components/SectionDivider';
 import './App.css';
 
 function App() {
-
   useEffect(() => {
-    // Force browser to NOT keep scroll position on refresh
+    // Enhanced scroll management
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
-
-    // Scroll to top when page loads
     window.scrollTo(0, 0);
+
+    // Add smooth scrolling for anchor links
+    const handleAnchorClick = (e) => {
+      const href = e.target.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
   }, []);
 
   return (

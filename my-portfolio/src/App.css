@@ -11,7 +11,7 @@
   overflow-x: hidden;
 }
 
-/* Animated background gradient */
+/* Enhanced animated background */
 .App::before {
   content: '';
   position: fixed;
@@ -39,7 +39,7 @@
   }
 }
 
-/* Floating particles */
+/* Enhanced floating particles */
 .App::after {
   content: '';
   position: fixed;
@@ -48,8 +48,9 @@
   right: 0;
   bottom: 0;
   background-image: 
-    radial-gradient(circle, rgba(167, 139, 250, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+    radial-gradient(circle, rgba(167, 139, 250, 0.05) 1px, transparent 1px),
+    radial-gradient(circle, rgba(167, 139, 250, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px;
   animation: particleFloat 20s linear infinite;
   pointer-events: none;
   z-index: 0;
@@ -57,10 +58,10 @@
 
 @keyframes particleFloat {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) translateX(0);
   }
   100% {
-    transform: translateY(-50px);
+    transform: translateY(-50px) translateX(20px);
   }
 }
 
@@ -69,38 +70,28 @@ main {
   z-index: 1;
 }
 
-/* Smooth scroll */
+/* Enhanced smooth scroll */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
-/* Section transitions */
-section {
-  position: relative;
-  transition: all 0.5s ease;
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
 }
 
-/* Divider between sections */
-section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(167, 139, 250, 0.3) 50%,
-    transparent
-  );
+.loading-shimmer {
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200px 100%;
 }
 
-/* Remove divider from last section */
-section:last-child::after {
-  display: none;
-}
 /* Mobile Responsive */
 @media (max-width: 768px) {
   main {
@@ -111,9 +102,20 @@ section:last-child::after {
     scroll-margin-top: 60px;
   }
 
-  /* Reduce background animation intensity on mobile */
   .App::before,
   .App::after {
     opacity: 0.5;
+    animation-duration: 20s;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .App::before,
+  .App::after,
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

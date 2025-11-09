@@ -1,44 +1,82 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Navbar.css';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (href) => {
+    setIsOpen(false);
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-content">
           {/* Logo */}
           <div className="navbar-logo">
-            aymane 
+            <span className="logo-text">Aymane</span>
+            
           </div>
 
           {/* Desktop Menu */}
           <div className="navbar-menu">
-            <a href="#home" className="nav-link">Home</a>
-            <a href="#about" className="nav-link">About</a>
-            <a href="#projects" className="nav-link">Projects</a>
-            <a href="#contact" className="nav-link">Contact</a>
+            {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+              <a 
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="nav-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(`#${item.toLowerCase()}`);
+                }}
+              >
+                {item}
+              </a>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="navbar-toggle"
+            className={`navbar-toggle ${isOpen ? 'active' : ''}`}
+            aria-label="Toggle menu"
           >
-            {isOpen ? '✕' : '☰'}
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <div className="navbar-mobile">
-            <a href="#home" className="nav-link-mobile">Home</a>
-            <a href="#about" className="nav-link-mobile">About</a>
-            <a href="#projects" className="nav-link-mobile">Projects</a>
-            <a href="#contact" className="nav-link-mobile">Contact</a>
-          </div>
-        )}
+        <div className={`navbar-mobile ${isOpen ? 'active' : ''}`}>
+          {['Home', 'About', 'Projects', 'Contact'].map((item) => (
+            <a 
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              className="nav-link-mobile"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(`#${item.toLowerCase()}`);
+              }}
+            >
+              {item}
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   );
