@@ -67,7 +67,6 @@ export default function Contact() {
         </p>
 
         <div className="contact-wrapper">
-          {/* Contact Info Cards */}
           <div className="contact-cards">
             {contactInfo.map((info, index) => (
               <div key={index} className="contact-card">
@@ -86,7 +85,6 @@ export default function Contact() {
             ))}
           </div>
 
-          {/* Social Links */}
           <div className="social-section">
             <h3 className="social-title">Connect With Me</h3>
             <div className="social-cards">
@@ -110,7 +108,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* CTA */}
           <div className="cta-section">
             <h3>Ready to start a project?</h3>
             <p>Drop me an email and let's make something amazing together!</p>

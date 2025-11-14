@@ -115,7 +115,6 @@ export default function Projects() {
           A collection of projects that showcase my skills and passion for development
         </p>
 
-        {/* Filter Buttons */}
         <div className="filter-buttons">
           {categories.map((category) => (
             <button
@@ -134,7 +133,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Projects Grid */}
         <div className={`projects-grid ${isVisible ? 'animate' : ''}`}>
           {filteredProjects.map((project, index) => (
             <div 
@@ -199,7 +197,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="empty-state">
             <div className="empty-icon">📁</div>
@@ -208,7 +205,6 @@ export default function Projects() {
           </div>
         )}
 
-        {/* CTA */}
         <div className="projects-cta">
           <p>Interested in seeing more? Check out my GitHub for additional projects and contributions.</p>
           <a 

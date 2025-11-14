@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './About.css';
 
 export default function About() {
+  const [activeFilter, setActiveFilter] = useState('All');
   const [isVisible, setIsVisible] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const sectionRef = useRef(null);
@@ -54,51 +55,144 @@ export default function About() {
 
   const skillsData = [
     {
-      category: 'Frontend Technologies',
-      icon: '🎨',
-      skills: [
-        { name: 'React.js', level: 85 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'HTML5', level: 95 },
-        { name: 'CSS3', level: 88 },
-        { name: 'Bootstrap', level: 85 },
-        { name: 'Tailwind CSS', level: 80 }
-      ]
+      id: 1,
+      name: 'React.js',
+      category: 'Frontend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
     },
     {
-      category: 'Backend Technologies',
-      icon: '⚙️',
-      skills: [
-        { name: 'PHP', level: 75 },
-        { name: 'Laravel', level: 70 },
-        { name: 'Node.js', level: 65 },
-        { name: 'Express.js', level: 60 },
-        { name: 'RESTful APIs', level: 80 }
-      ]
+      id: 2,
+      name: 'JavaScript',
+      category: 'Frontend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
     },
     {
-      category: 'Database & Tools',
-      icon: '🗄️',
-      skills: [
-        { name: 'MySQL', level: 80 },
-        { name: 'MongoDB', level: 65 },
-        { name: 'Git & GitHub', level: 85 },
-        { name: 'VS Code', level: 90 },
-        { name: 'Postman', level: 75 }
-      ]
+      id: 3,
+      name: 'HTML5',
+      category: 'Frontend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
     },
     {
+      id: 4,
+      name: 'CSS3',
+      category: 'Frontend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
+    },
+    {
+      id: 5,
+      name: 'Bootstrap',
+      category: 'Frontend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'
+    },
+    {
+      id: 6,
+      name: 'Tailwind CSS',
+      category: 'Frontend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg'
+    },
+    {
+      id: 7,
+      name: 'PHP',
+      category: 'Backend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg'
+    },
+    {
+      id: 8,
+      name: 'Laravel',
+      category: 'Backend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg'
+    },
+    {
+      id: 9,
+      name: 'Node.js',
+      category: 'Backend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'
+    },
+    {
+      id: 10,
+      name: 'Express.js',
+      category: 'Backend',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'
+    },
+    {
+      id: 11,
+      name: 'RESTful APIs',
+      category: 'Backend',
+      icon: '🔗'
+    },
+    {
+      id: 12,
+      name: 'MySQL',
+      category: 'Database',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'
+    },
+    {
+      id: 13,
+      name: 'MongoDB',
+      category: 'Database',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg'
+    },
+    {
+      id: 14,
+      name: 'Git',
+      category: 'Tools',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'
+    },
+    {
+      id: 15,
+      name: 'GitHub',
+      category: 'Tools',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'
+    },
+    {
+      id: 16,
+      name: 'VS Code',
+      category: 'Tools',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'
+    },
+    {
+      id: 17,
+      name: 'Postman',
+      category: 'Tools',
+      icon: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/postman.svg'
+    },
+    {
+      id: 18,
+      name: 'Problem Solving',
       category: 'Soft Skills',
-      icon: '💡',
-      skills: [
-        { name: 'Problem Solving', level: 90 },
-        { name: 'Communication', level: 85 },
-        { name: 'Team Collaboration', level: 80 },
-        { name: 'Time Management', level: 85 },
-        { name: 'Adaptability', level: 90 }
-      ]
+      icon: '🧩'
+    },
+    {
+      id: 19,
+      name: 'Communication',
+      category: 'Soft Skills',
+      icon: '💬'
+    },
+    {
+      id: 20,
+      name: 'Team Collaboration',
+      category: 'Soft Skills',
+      icon: '👥'
+    },
+    {
+      id: 21,
+      name: 'Time Management',
+      category: 'Soft Skills',
+      icon: '⏰'
+    },
+    {
+      id: 22,
+      name: 'Adaptability',
+      category: 'Soft Skills',
+      icon: '🔄'
     }
   ];
+
+  const categories = ['All', 'Frontend', 'Backend', 'Database', 'Tools', 'Soft Skills'];
+
+  const filteredSkills = activeFilter === 'All' 
+    ? skillsData 
+    : skillsData.filter(skill => skill.category === activeFilter);
 
   return (
     <section id="about" className="about" ref={sectionRef}>
@@ -111,7 +205,6 @@ export default function About() {
         </div>
 
         <div className="about-content-grid">
-          {/* About Content */}
           <div className="about-text-section">
             <h3 className="about-greeting">
               Hi, I'm Aymane Kaidi
@@ -126,7 +219,6 @@ export default function About() {
               I'm always eager to learn new technologies and improve my skills.
             </p>
 
-            {/* Highlights */}
             <div className="highlights-grid">
               {highlights.map((item, index) => (
                 <div 
@@ -144,7 +236,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Profile Image - Moved to the right */}
           <div className="profile-section">
             <div className="profile-container">
               <div className="profile-image-wrapper">
@@ -165,45 +256,71 @@ export default function About() {
           </div>
         </div>
 
-        {/* Skills Section */}
         <div className="skills-section">
           <h3 className="skills-title">
-            
+            <span className="skills-title-icon">🚀</span>
             Skills & Technologies
           </h3>
-          <div className={`skills-grid ${isVisible ? 'animate' : ''}`}>
-            {skillsData.map((category, categoryIndex) => (
-              <div 
-                key={categoryIndex} 
-                className="skill-category-card"
-                style={{ animationDelay: `${categoryIndex * 0.2}s` }}
+
+          <div className="skills-filter-buttons">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`skills-filter-btn ${activeFilter === category ? 'active' : ''}`}
+                onClick={() => setActiveFilter(category)}
               >
-                <div className="category-header">
-                  <span className="category-icon">{category.icon}</span>
-                  <h4 className="category-title">{category.category}</h4>
+                {category}
+                <span className="skills-filter-count">
+                  {category === 'All' 
+                    ? skillsData.length 
+                    : skillsData.filter(skill => skill.category === category).length
+                  }
+                </span>
+              </button>
+            ))}
+          </div>
+
+          <div className={`skills-grid ${isVisible ? 'animate' : ''}`}>
+            {filteredSkills.map((skill, index) => (
+              <div 
+                key={skill.id} 
+                className="skill-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="skill-icon">
+                  {skill.icon.includes('http') ? (
+                    <img 
+                      src={skill.icon} 
+                      alt={skill.name}
+                      className="skill-icon-img"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        const fallback = document.createElement('div');
+                        fallback.className = 'skill-icon-fallback';
+                        fallback.textContent = skill.name.charAt(0);
+                        e.target.parentNode.appendChild(fallback);
+                      }}
+                    />
+                  ) : (
+                    <span className="skill-icon-emoji">{skill.icon}</span>
+                  )}
                 </div>
-                <div className="skills-list">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="skill-item">
-                      <div className="skill-info">
-                        <span className="skill-name">{skill.name}</span>
-                        <span className="skill-percentage">{skill.level}%</span>
-                      </div>
-                      <div className="skill-bar">
-                        <div 
-                          className="skill-progress" 
-                          style={{ 
-                            '--skill-level': `${skill.level}%`,
-                            width: `${skill.level}%`
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="skill-info">
+                  <h4 className="skill-name">{skill.name}</h4>
+                  <span className="skill-category">{skill.category}</span>
                 </div>
               </div>
             ))}
           </div>
+
+          {filteredSkills.length === 0 && (
+            <div className="skills-empty-state">
+              <div className="empty-icon">🔍</div>
+              <h3>No skills found</h3>
+              <p>No skills match the selected filter. Try another category.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

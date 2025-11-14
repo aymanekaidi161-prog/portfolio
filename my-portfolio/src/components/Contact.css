@@ -1,20 +1,8 @@
 .contact {
   min-height: 100vh;
-  padding: 100px 20px;
-  background: #0a0a0a;
+  padding: 80px 20px 100px; /* Adjusted padding */
+  background: transparent; /* Remove background */
   position: relative;
-  animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .contact::before {
@@ -26,6 +14,20 @@
   bottom: 0;
   background: radial-gradient(circle at 70% 50%, rgba(138, 43, 226, 0.08) 0%, transparent 50%);
   pointer-events: none;
+  z-index: -1; /* Push behind content */
+}
+
+/* Rest of your existing Contact.css remains the same */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contact-container {
